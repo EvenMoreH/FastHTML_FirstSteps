@@ -1,12 +1,29 @@
-from fasthtml.common import *
+from fasthtml.common import * # type: ignore
 
-app = FastHTML()
+app, rt = fast_app() # type: ignore
 
-@app.get("/")
+@rt("/")
 def home():
     page = Html(
-        Head(Title('Some page')),
-        Body(Div('Some text, ', A('A link', href='https://example.com'), Img(src="https://placehold.co/200"), cls='myclass')))
+        Head(
+            Title('Example Page'),
+            Link(rel="stylesheet", href="/examples/static/styles.css")
+        ),
+        Body(
+            Div(
+                'Some text,',
+                cls='classA'
+            ),
+            Div(
+                A('Clickable Link', href='https://example.com'),
+                cls='classB'
+            ),
+            Div(
+                Img(src="https://placehold.co/200"),
+                cls='classA'
+            )
+        )
+    )
     return page
 
-serve()
+serve() # type: ignore

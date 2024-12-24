@@ -1,0 +1,12 @@
+.classA {
+    background-color: lightgray;
+    padding: 15px;
+}
+
+.classB {
+    background-color: lightgray;
+    padding: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    font-variant-caps: all-petite-caps;
+}
