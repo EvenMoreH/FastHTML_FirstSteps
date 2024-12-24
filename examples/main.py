@@ -1,13 +1,13 @@
-from fasthtml.common import *
+from fasthtml.common import * # type: ignore
 
-app,rt = fast_app()
+app,rt = fast_app() # type: ignore
 
 # Displays Hello World! when localhost is visited
 @rt('/')
-def get(): return Div(P('Hello World!'), hx_get="/change")
+def get1(): return Div(P('Hello World!'), hx_get="/change")
 
 # Displays Nice to be here! when Hello World! is clicked
 @rt('/change')
-def get(): return P('Nice to be here!')
+def get2(): return P('Nice to be here!')
 
-serve()
+serve() # type: ignore
