@@ -1,7 +1,8 @@
 from fasthtml.common import * # type: ignore
 from fasthtml.common import (
-    Form, Fieldset, Label, Input, Button, Html, Head, Body, Div, P, Title, Titled, A, RedirectResponse
+    Form, Fieldset, Label, Input, Button, Html, Head, Body, Div, P, Title, Titled, A
 )
+
 import re
 
 app, rt = fast_app() # type: ignore
