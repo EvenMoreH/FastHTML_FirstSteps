@@ -18,17 +18,17 @@ temperature_form = Form(
             pattern="^-?\d+(\.\d+)?$",
             title="\nEnter a valid floating-point number",
             required=True,
-            style="font-size: clamp(16px, 2vw + 0.5rem, 24px);"
+            style="font-size: clamp(16px, 2vw + 0.5rem, 20px);"
             )
         ),
-        style="padding: 10px; font-variant-caps: all-petite-caps; font-size: clamp(36px, 3vw + 0.75rem, 48px); line-height: 1.2;"
+        style="padding: 10px; font-variant-caps: all-petite-caps; font-size: clamp(20px, 3vw + 0.75rem, 24px); line-height: 1.2;"
     ),
     Div(
         Button("Kelvin -> Celsius",
             name="conversion",
             value="kc",
             type="submit",
-            style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+            style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
         ),
         style="padding: 10px;"
     ),
@@ -37,7 +37,7 @@ temperature_form = Form(
             name="conversion",
             value="kf",
             type="submit",
-            style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+            style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
         ),
         style="padding: 10px;"
     ),
@@ -46,7 +46,7 @@ temperature_form = Form(
             name="conversion",
             value="fc",
             type="submit",
-            style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+            style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
         ),
         style="padding: 10px;"
     ),
@@ -55,7 +55,7 @@ temperature_form = Form(
             name="conversion",
             value="fk",
             type="submit",
-            style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+            style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
         ),
         style="padding: 10px;"
     ),
@@ -64,7 +64,7 @@ temperature_form = Form(
             name="conversion",
             value="cf",
             type="submit",
-            style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+            style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
         ),
         style="padding: 10px;"
     ),
@@ -73,7 +73,7 @@ temperature_form = Form(
             name="conversion",
             value="ck",
             type="submit",
-            style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+            style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
         ),
         style="padding: 10px;"
     ),
@@ -105,7 +105,7 @@ def convert_temperature(temperature:str, conversion:str):
                 P("Please enter a valid floating-point number for the temperature."),
                 Button(
                     A("Return to Form", href="/"),
-                    style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+                    style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
                 ),
                 style="padding: 10px"
             )
@@ -142,15 +142,15 @@ def convert_temperature(temperature:str, conversion:str):
         Body(
             Titled(
                 "Conversion Results",
-                style="font-variant-caps: all-petite-caps; font-size: clamp(24px, 3vw + 0.75rem, 24px);"
+                style="font-variant-caps: all-petite-caps; font-size: clamp(20px, 3vw + 0.75rem, 24px);"
             ),
             P(
                 result,
-                style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+                style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
             ),
             Button(
                 A("Return to Form", href="/"),
-                style="font-size: clamp(14px, 1.5vw + 0.5rem, 24px); font-weight: 500;"
+                style="font-size: clamp(14px, 1.5vw + 0.5rem, 18px); font-weight: 500;"
             ),
             style="padding: 10px"
         )
