@@ -9,10 +9,6 @@ from fasthtml.common import (
 # for local
 app, rt = fast_app(static_path="app/static") # type: ignore
 
-# TODO:
-#   1. Built options A to C in a way that when clicked:
-#       1.1 Options menu closes
-#       1.2 Dropdown button text changes to selected option
 
 @rt("/")
 def homepage():
@@ -28,9 +24,9 @@ def homepage():
         Body(
             Div(
                 Button(
-                    "Dropdown",
+                    "Select Option",
                     id="dropdown-button",
-                    hx_get="/show",
+                    hx_get="/show_dropdown",
                     hx_target="#dropdown-menu",
                     style="width: max(200px, 20%)",
                 ),
@@ -49,7 +45,7 @@ def homepage():
             Div(style="padding: 1rem"),
             Button(
                 "Next",
-                hx_get="/output/{option}",
+                hx_get="/output/{button_option}",
                 hx_target="body",
                 type="submit",
             style="width: max(200px, 20%)",
@@ -57,7 +53,8 @@ def homepage():
         )
     )
 
-@rt("/show")
+# handles selecting option from dropdown and fetches /hide options if cursor leaves menu
+@rt("/show_dropdown")
 def show():
     return Div(
                 Button("A", hx_target="#dropdown-button", hx_get="/selected/A", hx_trigger="click", hx_swap="outerHTML"),
@@ -67,10 +64,11 @@ def show():
                 style="display: flex; flex-direction: column; text-align: center; background: grey; width: max(200px, 20%); position: absolute;",
                 # mouseleave trigger to hide content when mouse moves out of list of dropdown items
                 hx_trigger="mouseleave delay:200ms",
-                hx_get="/hide",
+                hx_get="/hide_dropdown",
             )
 
-@rt("/hide")
+# handles hiding dropdown by setting it to empty string when mouseleave triggers on the list (login in /show_dropdown)
+@rt("/hide_dropdown")
 def hide():
     return Div(
                 "",
@@ -78,22 +76,25 @@ def hide():
                 style="display: flex; flex-direction: column;"
             )
 
-@rt("/selected/{option}")
-def selected(session, option: str):
-    session["chosen_type"] = option
+# handles displaying what option was selected from dropdown and casting it instead of dropdown button name
+@rt("/selected/{button_option}")
+def selected(session, button_option:str):
+    session["button_option_selected"] = button_option
 
     return Button(
-        f"Option {option}",
+        f"Option {button_option}",
         id="dropdown-button",
-        hx_get="/show",
+        hx_get="/show_dropdown",
         hx_target="#dropdown-menu",
         hx_trigger="click",
         style="width: max(200px, 20%)",
         )
 
-@rt("/output/{option}")
-async def output(session, option:str):
-    chosen_type = session.get("chosen_type", "No value set")
+# example 'Next Page' that handles taking selected option and displaying it on 'new page' using session token
+#   done to test carrying variables between endpoints
+@rt("/output/{button_option}")
+async def output(session, button_option:str):
+    chosen_type = session.get("button_option_selected", "No value set")
     if chosen_type == "A":
         item_type = "Armor"
     elif chosen_type == "B":
