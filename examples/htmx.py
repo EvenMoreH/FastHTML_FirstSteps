@@ -9,10 +9,11 @@ def homepage():
             Title("TEST"),
             Meta(name="viewport", content="width=device-width, initial-scale=1"),
             Script(src="https://unpkg.com/htmx.org"),
+            Link(href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap", rel="stylesheet"),
             Style(
                 """
                 * {
-                    font-family: Georgia, 'Times New Roman', Times, serif;
+                    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
                     font-size: clamp(1rem, 2vw, 3rem);
                     background-color: #1C1E1F;
                     color: rgb(225, 225, 225);
